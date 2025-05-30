@@ -1,0 +1,13 @@
+connection:
+    type: local
+
+tasks:
+    - name: hello world
+      module: command
+      args:
+        cmd: echo hello world
+
+    - name: date
+      module: command
+      args:
+        cmd: date

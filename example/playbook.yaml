@@ -1,0 +1,16 @@
+connection:
+    type: ssh
+    address: 127.0.0.1
+    username: mabou
+    key: /home/user/.ssh/id_rsa
+
+tasks:
+    - name: hello world
+      module: command
+      args:
+        cmd: echo hello world
+
+    - name: date
+      module: command
+      args:
+        cmd: date
