@@ -23,3 +23,14 @@ the library __pkg/connection__ has the code fo the different communication metho
 
 a module is the tools used to execute the task
 in the library __pkg/module__
+
+## documentation
+
+documentation is in folder `doc/`.
+execute the command below to generate the UML diagrams with `plantUML`
+
+```
+plantuml -o doc/output doc/*
+```
+
+> __Note:__ `doc/output/*.png` files are set in gitignore to reduce size of git archive

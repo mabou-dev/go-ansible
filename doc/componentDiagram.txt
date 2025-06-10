@@ -1,0 +1,32 @@
+@startuml
+skinparam componentStyle rectangle
+
+component Playbook
+interface Load
+Load - Playbook
+
+component ModuleFactory
+interface ModuleStore
+ModuleStore - ModuleFactory
+
+component "Client Machine" as Client
+interface Connection
+Connection - Client
+
+component Executor
+Executor ..> Load
+Executor ..> ModuleStore
+Executor ..> Connection
+
+'package "Connection" as Connection {
+'    component SSHConnection
+'    component LocalConnection
+'
+'    interface SSH
+'    SSHConnection --> SSH
+'
+'    interface Local
+'    LocalConnection --> Local
+'}
+
+@enduml

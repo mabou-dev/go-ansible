@@ -1,0 +1,56 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+'class Execute {}
+
+'Connection definition
+interface Connection {
+    +runCommand(string)
+}
+
+class SSHConnection {
+    +ip : string
+    +protocol : string
+    +port : string
+
+    +newSSHConnection()
+}
+
+class LocalConnection {
+    +newLocalConnection()
+}
+
+Connection <|-- SSHConnection
+Connection <|-- LocalConnection
+
+'Module definition
+interface Module {
+    +execute()
+}
+
+class CommandModule {
+    +execute()
+}
+
+Module <|-- CommandModule
+
+'Playbook definition
+class Playbook {
+    +path : string
+    +connection : Connection
+    +tasks : []Task
+    
+    +load()
+    +parse()
+}
+
+class Task {
+    +module : Module
+    +command : string
+}
+
+Playbook *-- Connection
+Playbook *-- Task
+Task *-- Module
+
+@enduml
